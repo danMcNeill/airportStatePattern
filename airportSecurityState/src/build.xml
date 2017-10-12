@@ -1,0 +1,40 @@
+<project name="airportSecurityState" default="all" basedir="..">
+	
+	<property name="BUILD.compiler" value="modern"/>
+	<property name="src" value="src/"/>
+	<property name="BUILD" value="src/BUILD/"/>
+	<property name="classes" value="${BUILD}/classes"/>
+
+	<target name="all">
+		<mkdir dir="${BUILD}"/>
+		<mkdir dir="${classes}"/>
+		<javac srcdir="${src}" destdir="${classes}"
+			includes="airportSecurityState/**"
+			excludes="**/package.html"
+			debug="on"
+			optimize="on"
+			deprecation="off"
+			classpath="${classes}"/>
+	</target>
+
+	<target name="clean">
+		<delete dir="${BUILD}"/>
+	</target>
+
+
+	<target name="jar">
+		<mkdir dir="${BUILD}/jar"/>
+		<jar destfile="${BUILD}/jar/airportSecurityState.jar" basedir="${BUILD}/classes">
+			<manifest>
+				<attribute name="Main-Class" value="airportSecurityState.Driver"/>
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="run" depends="jar">
+		<java jar="${BUILD}/jar/airportSecurityState.jar" fork="true">
+			<arg value="${arg0}"/>
+			<arg value="${arg1}"/>
+		</java>
+	</target>
+
