@@ -9,7 +9,7 @@ public class MyLogger {
 	 * Debug vlaue=0 {No output should be printed to stdout.
 	 */
 
-	public static enum DebugLevel {NOOUTPUT, ADD, ADD, STATECHANGE, CONSTRUCTOR};
+	public static enum DebugLevel {NOOUTPUT, ADD, SECONDADD, STATECHANGE, CONSTRUCTOR};
 	private static DebugLevel debugLevel;
 
 	public static void setDebugValue(int newLevel) {
@@ -27,7 +27,7 @@ public class MyLogger {
 		}
 	}
 
-	public static void setDebugValue(DebugValue newLevel) {
+	public static void setDebugValue(DebugLevel newLevel) {
 		debugLevel = newLevel;
 	}
 

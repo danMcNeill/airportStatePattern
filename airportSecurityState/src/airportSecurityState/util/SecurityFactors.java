@@ -1,13 +1,14 @@
 package airportSecurityState;
 
+import java.io.File;
 
 public class SecurityFactors {
 
-	private State lr;
-	private State mr;
-	private State hr;
+	private AirportStateI lr;
+	private AirportStateI mr;
+	private AirportStateI hr;
 
-	private State state = lr;
+	private AirportStateI state = lr;
 
 	private int days;
 	private int badItems;
@@ -34,35 +35,35 @@ public class SecurityFactors {
 	 * @return nothing
 	 * sets state to new state
 	 */
-	public void setState(State newState) {
+	public void setState(AirportStateI newState) {
 		state = newState;
 	}
 
 	/**
 	 * @return State object representing current state
 	 */
-	public State getState() {
+	public AirportStateI getState() {
 		return state;
 	}
 
 	/**
 	 * @return low risk State object
 	 */
-	public State getLowRiskState() {
+	public AirportStateI getLowRiskState() {
 		return lr;
 	}
 
 	/**
 	 * @return moderate risk State object
 	 */
-	public State getModerateRiskState() {
+	public AirportStateI getModerateRiskState() {
 		return mr;
 	}
 
 	/**
 	 * @return high risk state object
 	 */
-	public State getHighRiskObject() {
+	public AirportStateI getHighRiskObject() {
 		return hr;
 	}
 
@@ -126,6 +127,24 @@ public class SecurityFactors {
 		int tempInt = 0;
 		FileProcessor fp = new FileProcessor(input);
 		while((s = fp.readLine()) != null) {
+			String[] semiColons = s.split(";");
+
+			String[] dayArray = semiColons[0].split(":");
+			String[] itemArray = semiColons[3].split(":");
+
+			int newDaysValue = Integer.parseInt(dayArray[1]);
+			setDays(newDaysValue);
+
+			setTravellers(getTravellers() + 1);
+
+			String item = itemArray[1];
+			if(item.equals("Gun") || item.equals("NailCutter") || item.equals("Blade") || item.equals("Knife"))
+				setBadItems(getBadItems() + 1);
+
+			tightenOrLoosenSecurity();
+			/*
+
+
 			try {
 				String array[] = s.split(";");
 				tempInt = Integer.parseInt(array[0]);
@@ -139,8 +158,10 @@ public class SecurityFactors {
 				System.err.println(s + " is not a number, so it was skipped");
 				continue;
 			}
+			*/
 		}
-		fp.closeFile();	}
+
+		fp.closeFile();
 
 
 

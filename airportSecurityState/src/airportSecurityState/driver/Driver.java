@@ -5,13 +5,15 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		if((args.size() != 3) || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
+		if((args.length != 3) || args[0].equals("${arg0}") || args[1].equals("${arg1}") || args[2].equals("${arg2}")) {
 			System.err.println("Must specify all three arguments: <input file> <output file> <Logger number>");
 			System.exit(1);
 		}
 
+		int bug = 0;
+
 		try {
-			int bug = Integer.parseInt(args[2]);
+			bug = Integer.parseInt(args[2]);
 		}
 		catch(NumberFormatException n) {
 			System.err.println(args[2] + " is not a valid integer. Exiting.");
@@ -27,7 +29,7 @@ public class Driver {
 		
 		SecurityFactors context = new SecurityFactors();
 
-		context.insertTravellers(args[0]);	
+		context.insertInfo(args[0]);	
 		/*	
 
 		File input = new File(inputFile);
@@ -55,5 +57,6 @@ public class Driver {
 		}
 		fp.closeFile();	}
 		*/
+	}
 
 }

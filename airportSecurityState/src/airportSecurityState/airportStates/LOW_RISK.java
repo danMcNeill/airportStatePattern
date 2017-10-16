@@ -9,11 +9,8 @@ public class LOW_RISK implements AirportStateI {
 		sf = s;
 	}
 
-	public void tightenOrLoosenSecurity(int operation) {
+	public void tightenOrLoosenSecurity() {
 
-		if(!operation) { // tighten
-			sf.setState(sf.getModerateState());
-		}
 
 	}
 
