@@ -1,20 +1,17 @@
 package airportSecurityState;
 
 
-public class LOW_RISK implements AirportStateI {
+public class HIGH_RISK implements AirportStateI {
 
 	private SecurityFactors sf;
 
-	public LOW_RISK(SecurityFactors s) {
+	public HIGH_RISK(SecurityFactors s) {
 		sf = s;
-		MyLogger.writeMessage("LOW_RISK constructor called.", MyLogger.DebugLevel.CONSTRUCTOR);
+		MyLogger.writeMessage("HIGH_RISK constructor called.", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 
 	public void tightenOrLoosenSecurity() {
 
-		if(((sf.getTravellers() / sf.getDays()) >= 4) || ((sf.getBadItems() / sf.getDays()) >= 1)) {
-			sf.setState(sf.getModerateRiskState());
-		}	
 
 	}
 
@@ -32,8 +29,6 @@ public class LOW_RISK implements AirportStateI {
 	public SecurityFactors getSecurityFactors() {
 		return sf;
 	}
-
-
 
 
 }

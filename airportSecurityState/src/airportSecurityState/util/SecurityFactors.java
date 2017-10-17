@@ -8,7 +8,7 @@ public class SecurityFactors {
 	private AirportStateI mr;
 	private AirportStateI hr;
 
-	private AirportStateI state = lr;
+	private AirportStateI state;
 
 	private int days;
 	private int badItems;
@@ -21,6 +21,8 @@ public class SecurityFactors {
 		days = 0;
 		badItems = 0;
 		travellers = 0;
+		state = lr;
+		MyLogger.writeMessage("SecurityFactors constructor called.", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 
 	/**
@@ -133,13 +135,18 @@ public class SecurityFactors {
 			String[] itemArray = semiColons[3].split(":");
 
 			int newDaysValue = Integer.parseInt(dayArray[1]);
-			setDays(newDaysValue);
+			if(newDaysValue != getDays()) {
+				setDays(newDaysValue);
+				MyLogger.writeMessage("New day: " + newDaysValue, MyLogger.DebugLevel.NEWDAY);
+			}
 
 			setTravellers(getTravellers() + 1);
 
 			String item = itemArray[1];
-			if(item.equals("Gun") || item.equals("NailCutter") || item.equals("Blade") || item.equals("Knife"))
+			if(item.equals("Gun") || item.equals("NailCutter") || item.equals("Blade") || item.equals("Knife")) {
 				setBadItems(getBadItems() + 1);
+				MyLogger.writeMessage("New bad item: " + item, MyLogger.DebugLevel.NEWBADITEM);
+			}
 
 			tightenOrLoosenSecurity();
 			/*

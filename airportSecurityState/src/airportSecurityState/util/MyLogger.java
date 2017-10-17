@@ -9,20 +9,20 @@ public class MyLogger {
 	 * Debug vlaue=0 {No output should be printed to stdout.
 	 */
 
-	public static enum DebugLevel {NOOUTPUT, ADD, SECONDADD, STATECHANGE, CONSTRUCTOR};
+	public static enum DebugLevel {NOOUTPUT, NEWDAY, NEWBADITEM, STATECHANGE, CONSTRUCTOR};
 	private static DebugLevel debugLevel;
 
 	public static void setDebugValue(int newLevel) {
 		switch(newLevel) {
 			case 4: debugLevel = DebugLevel.CONSTRUCTOR;
 				break;
-			case 3: debugLevel = DebugLevel.ADD;
+			case 3: debugLevel = DebugLevel.STATECHANGE;
 				break;
-			case 2: debugLevel = DebugLevel.ADD;
+			case 2: debugLevel = DebugLevel.NEWBADITEM;
 				break;
-			case 1: debugLevel = DebugLevel.STATECHANGE;
+			case 1: debugLevel = DebugLevel.NEWDAY;
 				break;
-			case 0: debugLevel = DebugLevel.CONSTRUCTOR;
+			case 0: debugLevel = DebugLevel.NOOUTPUT;
 				break;
 		}
 	}

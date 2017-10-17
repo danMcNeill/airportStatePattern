@@ -21,6 +21,7 @@ public class FileProcessor {
 			e.printStackTrace();
 			System.exit(0);
 		}
+		MyLogger.writeMessage("FileProcessor constructor called.", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 
 	/**
