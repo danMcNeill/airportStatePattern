@@ -10,6 +10,10 @@ public class LOW_RISK implements AirportStateI {
 		MyLogger.writeMessage("LOW_RISK constructor called.", MyLogger.DebugLevel.CONSTRUCTOR);
 	}
 
+	/**
+	 * @return nothing
+	 * changes state if conditions indicate to do so
+	 */
 	public void tightenOrLoosenSecurity() {
 
 		if(((sf.getTravellers() / sf.getDays()) >= 4) || ((sf.getBadItems() / sf.getDays()) >= 1)) {
@@ -32,8 +36,6 @@ public class LOW_RISK implements AirportStateI {
 	public SecurityFactors getSecurityFactors() {
 		return sf;
 	}
-
-
 
 
 }

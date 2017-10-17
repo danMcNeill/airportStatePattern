@@ -12,6 +12,10 @@ public class MyLogger {
 	public static enum DebugLevel {NOOUTPUT, NEWDAY, NEWBADITEM, STATECHANGE, CONSTRUCTOR};
 	private static DebugLevel debugLevel;
 
+	/**
+	 * @return nothing
+	 * sets the Logger debug level to the specified value, if it is valid
+	 */
 	public static void setDebugValue(int newLevel) {
 		switch(newLevel) {
 			case 4: debugLevel = DebugLevel.CONSTRUCTOR;
@@ -27,15 +31,26 @@ public class MyLogger {
 		}
 	}
 
+	/**
+	 * @return nothing
+	 * sets the Logger debug level to the specified level
+	 */
 	public static void setDebugValue(DebugLevel newLevel) {
 		debugLevel = newLevel;
 	}
 
+	/**
+	 * @return nothing
+	 * writes the specified message only if the debug level matches specified
+	 */
 	public static void writeMessage(String message, DebugLevel newLevel) {
 		if(newLevel == debugLevel)
 			System.out.println(message);
 	}
 
+	/**
+	 * @return String version of DebugLevel
+	 */
 	public String toString() {
 		return "Debug level is " + debugLevel;
 	}
