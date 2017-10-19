@@ -133,48 +133,6 @@ public class SecurityFactors {
 			state.tightenOrLoosenSecurity();
 			
 			results.storeNewResult(state.operations());
-
-
-
-		/*
-			String[] semiColons = s.split(";");
-
-			String[] dayArray = semiColons[0].split(":");
-			String[] itemArray = semiColons[3].split(":");
-
-			int newDaysValue = Integer.parseInt(dayArray[1]);
-			if(newDaysValue != getDays()) {
-				setDays(newDaysValue);
-				MyLogger.writeMessage("New day: " + newDaysValue, MyLogger.DebugLevel.NEWDAY);
-			}
-
-			setTravellers(getTravellers() + 1);
-
-			String item = itemArray[1];
-			if(item.equals("Gun") || item.equals("NailCutter") || item.equals("Blade") || item.equals("Knife")) {
-				setBadItems(getBadItems() + 1);
-				MyLogger.writeMessage("New bad item: " + item, MyLogger.DebugLevel.NEWBADITEM);
-			}
-
-			tightenOrLoosenSecurity();
-			*/
-			/*
-
-
-			try {
-				String array[] = s.split(";");
-				tempInt = Integer.parseInt(array[0]);
-				if(String.valueOf(tempInt).length() != 4)
-					continue;
-				if(array[array.length-1].length() != 1)
-					continue;
-				insert(tempInt, array[array.length-1]);
-			}
-			catch(NumberFormatException n) {
-				System.err.println(s + " is not a number, so it was skipped");
-				continue;
-			}
-			*/
 		}
 
 		fp.closeFile();

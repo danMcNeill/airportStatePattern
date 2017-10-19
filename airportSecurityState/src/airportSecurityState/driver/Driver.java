@@ -31,37 +31,17 @@ public class Driver {
 
 		Results results = new Results();
 
+		try {
 		context.insertInfo(args[0], results);
+		}
+		catch(Exception e) {
+			System.err.println(e.toString());
+			e.printStackTrace();
+			System.exit(1);
+		}
 
 		results.writeToFile(args[1]);
 
-		/*	
-
-		File input = new File(inputFile);
-		if(!input.isFile()) { // file does not exist
-			System.out.println("Input file specified does not exist. Exiting.");
-			System.exit(0);
-		}
-		String s;
-		int tempInt = 0;
-		FileProcessor fp = new FileProcessor(input);
-		while((s = fp.readLine()) != null) {
-			try {
-				String array[] = s.split(":");
-				tempInt = Integer.parseInt(array[0]);
-				if(String.valueOf(tempInt).length() != 4)
-					continue;
-				if(array[array.length-1].length() != 1)
-					continue;
-				insert(tempInt, array[array.length-1]);
-			}
-			catch(NumberFormatException n) {
-				System.err.println(s + " is not a number, so it was skipped");
-				continue;
-			}
-		}
-		fp.closeFile();	}
-		*/
 	}
 
 }

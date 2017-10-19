@@ -15,6 +15,8 @@ public class MODERATE_RISK implements AirportStateI {
 	 * insert new line of input
 	 */
 	public void insertInput(String line) {
+		try {
+
 		String[] semiColons = line.split(";");
 	
 		String[] dayArray = semiColons[0].split(":");
@@ -34,6 +36,12 @@ public class MODERATE_RISK implements AirportStateI {
 			MyLogger.writeMessage("New bad item: " + item, MyLogger.DebugLevel.NEWBADITEM);
 		}
 
+		}
+		catch(Exception e) {
+			System.err.println(e.toString());
+			e.printStackTrace();
+			System.exit(1);
+		}
 	}
 
 	/**

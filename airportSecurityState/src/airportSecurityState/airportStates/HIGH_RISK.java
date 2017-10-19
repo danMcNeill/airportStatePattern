@@ -15,6 +15,8 @@ public class HIGH_RISK implements AirportStateI {
 	 * insert new line of input
 	 */
 	public void insertInput(String line) {
+		try {
+
 		String[] semiColons = line.split(";");
 	
 		String[] dayArray = semiColons[0].split(":");
@@ -32,6 +34,14 @@ public class HIGH_RISK implements AirportStateI {
 		if(item.equals("Gun") || item.equals("NailCutter") || item.equals("Blade") || item.equals("Knife")) {
 			sf.setBadItems(sf.getBadItems() + 1);
 			MyLogger.writeMessage("New bad item: " + item, MyLogger.DebugLevel.NEWBADITEM);
+		}
+		
+		}
+
+		catch(Exception e) {
+			System.err.println(e.toString());
+			e.printStackTrace();
+			System.exit(1);
 		}
 
 	}
