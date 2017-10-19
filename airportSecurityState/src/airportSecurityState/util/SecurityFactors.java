@@ -65,7 +65,7 @@ public class SecurityFactors {
 	/**
 	 * @return high risk state object
 	 */
-	public AirportStateI getHighRiskObject() {
+	public AirportStateI getHighRiskState() {
 		return hr;
 	}
 
@@ -118,7 +118,7 @@ public class SecurityFactors {
 	 * @return nothing
 	 * processes inout file and deals with new travellers
 	 */
-	public void insertInfo(String inputFile) {
+	public void insertInfo(String inputFile, Results results) {
 
 		File input = new File(inputFile);
 		if(!input.isFile()) { // file does not exist
@@ -129,6 +129,14 @@ public class SecurityFactors {
 		int tempInt = 0;
 		FileProcessor fp = new FileProcessor(input);
 		while((s = fp.readLine()) != null) {
+			state.insertInput(s);
+			state.tightenOrLoosenSecurity();
+			
+			results.storeNewResult(state.operations());
+
+
+
+		/*
 			String[] semiColons = s.split(";");
 
 			String[] dayArray = semiColons[0].split(":");
@@ -149,6 +157,7 @@ public class SecurityFactors {
 			}
 
 			tightenOrLoosenSecurity();
+			*/
 			/*
 
 

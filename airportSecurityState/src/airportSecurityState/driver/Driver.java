@@ -29,7 +29,12 @@ public class Driver {
 		
 		SecurityFactors context = new SecurityFactors();
 
-		context.insertInfo(args[0]);	
+		Results results = new Results();
+
+		context.insertInfo(args[0], results);
+
+		results.writeToFile(args[1]);
+
 		/*	
 
 		File input = new File(inputFile);
